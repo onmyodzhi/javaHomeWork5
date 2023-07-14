@@ -12,7 +12,7 @@ public class UserMapper implements Mapper<User, String> {
     @Override
     public User toOutput(String s) {
         String[] lines = s.split(",");
-        long id;
+        Long id;
         if (isDigit(lines[0])) {
             id = Long.parseLong(lines[0]);
             return new User(id, lines[1], lines[2], lines[3]);

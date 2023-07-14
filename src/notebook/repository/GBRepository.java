@@ -11,6 +11,8 @@ public interface GBRepository<E, I> {
     Optional<E> findById(List<User> users, I id);
     Optional<E> update(I id, E e);
     boolean delete(List<User> allUser, Long id);
-
-
+    interface Operation<T> {
+        List<T> readAll();
+        void saveAll(List<T> data);
+    }
 }

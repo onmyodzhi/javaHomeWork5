@@ -20,11 +20,25 @@ public class UserController {
     public User readUser(Long userId) throws Exception {
         List<User> users = repository.findAll();
         for (User user : users) {
-            if (Objects.equals(user.getId(), userId)) {
+            if (Objects.equals(user.getId() > 0, userId > 0)) {
                 return user;
             }
         }
 
         throw new RuntimeException("User not found");
+    }
+
+    public List<User> readAllUsers() {
+        return repository.findAll();
+    }
+
+    public void updateUser(Long id, User user) {
+        repository.update(id,user);
+    }
+
+    public void deleteUser(List<User> users, Long id) {repository.delete(users, id);}
+
+    public void findById(List<User> users, Long id) {
+        repository.findById(users,id);
     }
 }
